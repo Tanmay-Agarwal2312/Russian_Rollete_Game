@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Virtual Roulette — Hotseat Party Game</title>
+  <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">VR</div>
+      <div>
+        <h1>Virtual Roulette — Hotseat Party Game</h1>
+        <p class="lead">A purely fictional tension game. No real-world instructions. Hotseat play: pass the device for each turn.</p>
+      </div>
+    </header>
+
+    <div class="grid">
+      <section class="card">
+        <div>
+          <label for="playerCount">Number of players</label>
+          <select id="playerCount">
+            <option value="2">2 players</option>
+            <option value="3">3 players</option>
+            <option value="4" selected>4 players</option>
+            <option value="5">5 players</option>
+            <option value="6">6 players</option>
+          </select>
+        </div>
+
+        <div style="margin-top:12px">
+          <label>Player names (optional)</label>
+          <div id="namesContainer" class="players-list"></div>
+        </div>
+
+        <div style="margin-top:12px" class="row">
+          <div>
+            <label for="bullets">Loaded chambers (1–3)</label>
+            <select id="bullets">
+              <option value="1" selected>1 bullet (default)</option>
+              <option value="2">2 bullets</option>
+              <option value="3">3 bullets</option>
+            </select>
+          </div>
+          <div>
+            <label for="autoSpin">Auto-spin each turn?</label>
+            <select id="autoSpin">
+              <option value="true" selected>Yes — random each trigger</option>
+              <option value="false">No — fixed chamber order (less random)</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="margin-top:14px" class="controls">
+          <button id="createBtn">Create Game</button>
+          <button id="resetBtn" class="secondary">Reset</button>
+        </div>
+
+        <p class="footer-note">This is a simulation for entertainment only. Do not attempt or reproduce dangerous real-life actions.</p>
+      </section>
+
+      <section class="card" id="playArea" aria-hidden="true" style="display:none">
+        <div style="display:flex; align-items:center; gap:12px; justify-content:space-between">
+          <div>
+            <div class="small muted">Current turn</div>
+            <div id="currentPlayerDisplay" class="big">—</div>
+          </div>
+          <div style="text-align:right">
+            <div class="small muted">Remaining players</div>
+            <div id="remainingCount" class="big">—</div>
+          </div>
+        </div>
+
+        <div class="chamber" id="chamber">
+          <div class="center" id="chamberLabel">Spin</div>
+        </div>
+
+        <div class="status" id="statusText">Press <strong>Trigger</strong> to take a turn.</div>
+
+        <div class="controls">
+          <button id="triggerBtn">Trigger</button>
+          <button id="spinBtn" class="secondary">Spin Cylinder</button>
+          <button id="nextBtn" class="secondary" style="display:none">Next Player</button>
+          <button id="newGameBtn" class="secondary">New Game</button>
+        </div>
+
+        <div style="margin-top:12px">
+          <label>Players</label>
+          <div id="playersPanel" class="players-list" aria-live="polite"></div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="./game.js"></script>
+</body>
+</html>
